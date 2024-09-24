@@ -110,7 +110,7 @@ class NG_Shortcodes {
         $insight = $openai->generate_insights($prompt, $locale);
 
         // Return the result.
-        echo '<div class="ng-result">' . wp_kses_post($insight) . '</div>';
+        echo wp_kses_post($insight);
 
         wp_die();
     }
