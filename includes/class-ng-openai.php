@@ -39,12 +39,12 @@ class NG_OpenAI {
 
         // Prepare the request data.
         $data = array(
-            'model' => 'gpt-4o',
+            'model' => 'gpt-4',
             'messages' => array(
                 array(
                     'role' => 'system',
                     'content' => sprintf(
-                        'You are a numerology specialist. Provide insightful numerology readings using h2, h3, ol, ul, p tags as appropriate. Respond in the language corresponding to the locale code %s.',
+                        'You are a numerology specialist. Provide insightful numerology readings using only valid HTML tags like <h2>, <h3>, <ol>, <ul>, <li>, and <p>. Do not use Markdown or any other formatting. Respond in the language corresponding to the locale code %s. Make sure the output is well-formatted HTML.',
                         $locale
                     ),
                 ),
