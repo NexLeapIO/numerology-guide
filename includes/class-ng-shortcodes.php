@@ -68,7 +68,6 @@ class NG_Shortcodes {
 
         // Get the current site language.
         $locale = get_locale();
-        $language = locale_get_display_language($locale, $locale);
 
         switch ($type) {
             case 'general_forecast':
@@ -108,7 +107,7 @@ class NG_Shortcodes {
         // Generate insight using OpenAI API.
         require_once NG_PLUGIN_DIR . 'includes/class-ng-openai.php';
         $openai = new NG_OpenAI();
-        $insight = $openai->generate_insights($prompt, $language);
+        $insight = $openai->generate_insights($prompt, $locale);
 
         // Return the result.
         echo '<div class="ng-result">' . wp_kses_post($insight) . '</div>';
