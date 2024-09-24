@@ -58,11 +58,6 @@ Use the `[ng_form]` shortcode with the `type` attribute to display the desired f
 
   `[ng_form type="current_situation_consultation"]`
 
-## Screenshots
-
-1. Example of the General Astrological Forecast form.
-2. Display of the generated numerology insight.
-
 ## Frequently Asked Questions
 
 ### Q: Do I need an OpenAI API key?
