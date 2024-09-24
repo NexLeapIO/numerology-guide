@@ -24,7 +24,7 @@ class NG_OpenAI {
      * Constructor to set up API key.
      */
     public function __construct() {
-        $this->api_key = 'your-openai-api-key'; // Replace with your OpenAI API key.
+        $this->api_key = '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'; // Replace with your OpenAI API key.
     }
 
     /**
@@ -33,7 +33,7 @@ class NG_OpenAI {
      * @param string $locale The locale to use for the response.
      * @return string The generated content.
      */
-    public function generate_insights($propmt, $locale) {
+    public function generate_insights($prompt, $locale) {
         // OpenAI API endpoint.
         $endpoint = 'https://api.openai.com/v1/chat/completions';
 
@@ -58,8 +58,8 @@ class NG_OpenAI {
 
         // Set up the request headers.
         $headers = array(
-            'Content-Type: application/json',
-            'Authorization: Bearer ' . $this->api_key,
+            'Content-Type'  => 'application/json',
+            'Authorization' => 'Bearer ' . $this->api_key,
         );
 
         // Make the request.
@@ -74,6 +74,7 @@ class NG_OpenAI {
 
         // Handle the response.
         if (is_wp_error($response)) {
+            error_log('OpenAI API error: ' . $response->get_error_message());
             return __('An error occurred while generating the insight.', 'numerology-guide');
         } else {
             $body = json_decode(wp_remote_retrieve_body($response), true);
@@ -81,6 +82,7 @@ class NG_OpenAI {
             if (isset($body['choices'][0]['message']['content'])) {
                 return $body['choices'][0]['message']['content'];
             } else {
+                error_log('OpenAI API error: ' . wp_json_encode($body));
                 return __('An error occurred while generating the insight.', 'numerology-guide');
             }
         }

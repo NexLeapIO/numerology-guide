@@ -27,3 +27,15 @@ function nv_initialize_plugin() {
     $plugin->init_hooks();
 }
 add_action('plugins_loaded', 'nv_initialize_plugin');
+
+// Register AJAX actions.
+function ng_register_ajax_actions() {
+    $shortcodes = new NG_Shortcodes(); // Assuming the NG_Shortcodes class is handling the AJAX request.
+
+    // Register AJAX actions for logged-in users.
+    add_action('wp_ajax_ng_generate_insight', array($shortcodes, 'handle_ajax_request'));
+
+    // Register AJAX actions for non-logged-in users.
+    add_action('wp_ajax_nopriv_ng_generate_insight', array($shortcodes, 'handle_ajax_request'));
+}
+add_action('init', 'ng_register_ajax_actions');

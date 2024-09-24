@@ -82,7 +82,7 @@ class NG_Shortcodes {
                 break;
             case 'career_finance_forecast':
             case 'future_events_forecast':
-                $birt_date = sanitize_text_field($_POST['birth_date']);
+                $birth_date = sanitize_text_field($_POST['birth_date']);
                 $favorite_number = sanitize_text_field($_POST['favorite_number']);
                 $prompt_type = ($type === 'career_finance_forecast'  ) ? __( 'annual career and finance forecast', 'numerology-guide' ) : __( 'future events forecast', 'numerology-guide' );
                 $prompt = sprintf(
